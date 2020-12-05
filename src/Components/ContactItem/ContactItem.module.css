@@ -2,10 +2,11 @@
   display: flex;
   justify-content: space-between;
   outline: 1px solid rgb(131, 227, 241);
-  width: 400px;
+  width: 460px;
   margin-bottom: 10px;
   padding: 0 6px 0 14px;
   font-size: 18px;
+  text-align: center;
 }
 
 .item:last-child {
