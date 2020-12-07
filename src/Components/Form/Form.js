@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
 import PropTypes from 'prop-types';
 import s from './Form.module.css';
 
@@ -8,10 +7,6 @@ class Form extends Component {
     name: '',
     number: '',
   };
-
-  nameInputId = shortid.generate();
-  numberInputId = shortid.generate();
-  // contactId = shortid.generate();
 
   handleChange = event => {
     const { name, value } = event.currentTarget;
@@ -23,7 +18,7 @@ class Form extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-    const contact = { id: shortid.generate(), name, number };
+    const contact = { id: name, name, number };
     this.props.onSubmit(contact);
     this.resetForm();
   };
@@ -36,7 +31,7 @@ class Form extends Component {
     const { name, number } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label className={s.label} htmlFor={this.nameInputId}>
+        <label className={s.label} htmlFor={name}>
           Name
           <input
             className={s.input}
@@ -44,12 +39,12 @@ class Form extends Component {
             value={name}
             name={'name'}
             onChange={this.handleChange}
-            id={this.nameInputId}
+            id={name}
             placeholder="Enter contact name"
             required
           />
         </label>
-        <label className={s.label} htmlFor={this.numberInputId}>
+        <label className={s.label} htmlFor={number}>
           Number
           <input
             className={s.input}
@@ -57,7 +52,7 @@ class Form extends Component {
             name={'number'}
             value={number}
             onChange={this.handleChange}
-            id={this.numberInputId}
+            id={number}
             placeholder="Enter contact number"
             required
           />
